@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Firebase</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Cloud Cafe</h1>
+  <div id="content">
+    <form id="add-cafe-form">
+      <input type="text" name="name" placeholder="Cafe name">
+      <input type="text" name="city" placeholder="Cafe city">
+      <button>Add cafe</button>
+    </form>
+    <ul id="cafe-list"></ul>
+  </div>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: 'AIzaSyAS8of-_A7rl5RICegbEguvUrO7eUQN6hw',
+      authDomain: 'static-resource-245020.firebaseapp.com',
+      databaseURL: 'https://static-resource-245020.firebaseio.com',
+      projectId: 'static-resource-245020',
+      storageBucket: 'static-resource-245020.appspot.com',
+      messagingSenderId: '528970025919',
+      appId: '1:528970025919:web:b835ce454daa3ea3d82f0a',
+      measurementId: 'G-HZXGHRD7MY'
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+    db.settings({});
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>
