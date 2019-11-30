@@ -1,11 +1,19 @@
 const guideList = document.querySelector('.guides')
 const loggedInLinks = document.querySelectorAll('.logged-in')
 const loggedOutLinks = document.querySelectorAll('.logged-out')
-
+const accountDetails = document.querySelector('.account-details')
 
 // change navbar when auth changes
 const setupUi = user => {
     if (user) {
+        db.collection('user').doc(user.uid).get().then(doc => {
+            const html = `
+            <div>Logged in as ${user.email}</div>
+            <div>${doc.data().bio}</div>
+            `
+
+            accountDetails.innerHTML = html
+        })
         // toggle UI elements
         loggedInLinks.forEach(item => item.style.display = 'block')
         loggedOutLinks.forEach(item => item.style.display = 'none')
