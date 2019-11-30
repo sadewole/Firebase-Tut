@@ -67,6 +67,9 @@ signUp.addEventListener('submit', e => {
         M.Modal.getInstance(modal).close()
         // reset signup input
         signUp.reset()
+        signUp.querySelector('.error').innerHTML = ''
+    }).catch(err => {
+        signUp.querySelector('.error').innerHTML = err.message
     })
 })
 
@@ -88,5 +91,8 @@ signIn.addEventListener('submit', e => {
         M.Modal.getInstance(modal).close()
         // reset signup input
         signIn.reset()
+        signIn.querySelector('.error').innerHTML = ''
+    }).catch(err => {
+        signIn.querySelector('.error').innerHTML = err.message
     })
 })
