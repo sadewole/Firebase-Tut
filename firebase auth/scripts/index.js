@@ -2,14 +2,19 @@ const guideList = document.querySelector('.guides')
 const loggedInLinks = document.querySelectorAll('.logged-in')
 const loggedOutLinks = document.querySelectorAll('.logged-out')
 const accountDetails = document.querySelector('.account-details')
+const adminItems = document.querySelectorAll('.admin')
 
 // change navbar when auth changes
 const setupUi = user => {
     if (user) {
+        if (user.admin) {
+            adminItems.forEach(item => item.style.display = 'block')
+        }
         db.collection('user').doc(user.uid).get().then(doc => {
             const html = `
             <div>Logged in as ${user.email}</div>
             <div>${doc.data().bio}</div>
+            <div class="pink-text">${user.admin? 'Admin' : ''}</div>
             `
 
             accountDetails.innerHTML = html
@@ -18,7 +23,9 @@ const setupUi = user => {
         loggedInLinks.forEach(item => item.style.display = 'block')
         loggedOutLinks.forEach(item => item.style.display = 'none')
     } else {
+        accountDetails.innerHTML = ''
         // toggle UI elements
+        adminItems.forEach(item => item.style.display = 'none')
         loggedInLinks.forEach(item => item.style.display = 'none')
         loggedOutLinks.forEach(item => item.style.display = 'block')
     }
